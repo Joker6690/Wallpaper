@@ -15,8 +15,8 @@ public class SolutionService {
     public void getSolution(String filePath) {
         List<Room> rooms = fileReaderService.getRoomsFromFile(filePath);
         System.out.println("Total square feet of wallpaper needed: " + getTotalWallpaperNeeded(rooms) + "sq. ft.");
-        System.out.println("List of rooms with cubic shape (descending): " + listCubicRooms(rooms));
-        System.out.println("List of rooms that are appearing more than once: " + listIdenticalRooms(rooms));
+        System.out.println("List of rooms with cubic shape (descending): " + printSolutionLists(listCubicRooms(rooms)));
+        System.out.println("List of rooms that are appearing more than once: " + printSolutionLists(listIdenticalRooms(rooms)));
     }
 
     public int getTotalWallpaperNeeded(List<Room> rooms) {
@@ -25,7 +25,7 @@ public class SolutionService {
 
     public List<Room> listCubicRooms(List<Room> rooms) {
         return rooms.stream()
-                .filter(room -> room.getLength() == room.getWidth() && room.getWidth() == room.getHeight())
+                .filter(room -> (room.getLength() == room.getWidth() && room.getWidth() == room.getHeight()))
                 .sorted(Comparator.reverseOrder()).toList();
     }
 
@@ -38,5 +38,11 @@ public class SolutionService {
                 }
         });
         return duplicates;
+    }
+
+    public String printSolutionLists(List<Room> rooms) {
+        StringBuilder sb = new StringBuilder();
+        rooms.forEach(room -> sb.append("\n").append(room.toString()));
+        return sb.toString();
     }
 }

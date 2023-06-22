@@ -7,26 +7,17 @@ public class Room implements Comparable<Room> {
     private final int height;
     private final int surfaceArea;
 
-    public Room(int length, int width, int height) {
+    public Room(int length, int width, int height, int surfaceArea) {
         this.length = length;
         this.width = width;
         this.height = height;
-
-        this.surfaceArea = calculateSurfaceArea();
-    }
-
-    private int calculateSurfaceArea() {
-        int wall1 = this.length * this.width;
-        int wall2 = this.width * this.height;
-        int wall3 = this.height * this.length;
-        int smallestWall =  wall1 < wall2 && wall1 < wall3 ? wall1
-                : wall2 < wall1 && wall2 < wall3 ? wall2 : wall3;
-        return 2 * (wall1 + wall2 + wall3) + smallestWall;
+        this.surfaceArea = surfaceArea;
     }
 
     public int getLength() {
         return length;
     }
+
     public int getWidth() {
         return width;
     }
@@ -38,7 +29,6 @@ public class Room implements Comparable<Room> {
     public int getSurfaceArea() {
         return surfaceArea;
     }
-
 
     @Override
     public int compareTo(Room other) {
