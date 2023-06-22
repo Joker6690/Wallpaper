@@ -67,7 +67,7 @@ public class Room implements Comparable<Room> {
 
     @Override
     public String toString() {
-        return "\n Room{" +
+        return "Room{" +
                 "originalFormat=" + length + "x" + width + "x" + height +
                 ", length=" + length +
                 ", width=" + width +

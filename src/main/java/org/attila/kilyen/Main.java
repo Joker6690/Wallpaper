@@ -4,6 +4,7 @@ import org.attila.kilyen.service.FileReaderService;
 import org.attila.kilyen.service.SolutionService;
 
 public class Main {
+
     public static void main(String[] args) {
         System.out.println("Input file: ");
         if (args[0] == null || args[0].trim().isEmpty()) {
